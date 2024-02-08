@@ -10,10 +10,11 @@ use WebPConvert\WebPConvert;
 class Convert
 {
     protected $quality;
-    protected $strip;
-    protected $serve;
-    protected $log;
-    protected $converters;
+    protected $maxQuality;
+    protected $defaultQuality;
+    protected $metadata;
+    protected $encoding;
+    protected $skip;
 
     public function __construct()
     {
