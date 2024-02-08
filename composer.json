@@ -1,6 +1,6 @@
 {
-    "name": "felixhaeberle/kirby3-webp",
-    "description": "Kirby 3 CMS plugin for converting JPG, JPEG and PNG into much smaller WEBP – speed up your website!",
+    "name": "felixhaeberle/kirby4-webp",
+    "description": "Kirby 4 CMS plugin for converting JPG, JPEG and PNG into much smaller WEBP – speed up your website!",
     "type": "kirby-plugin",
     "require": {
         "rosell-dk/webp-convert": "^2.3",

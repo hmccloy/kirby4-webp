@@ -4,7 +4,7 @@
 @include_once __DIR__ . '/src/webp.php';
 
 function shouldGenerateWebP($file) {
-    return $file->kirby()->option('kirby3-webp', false);
+    return $file->kirby()->option('kirby4-webp', false);
 }
 
 function generateWebP($file) {
@@ -24,7 +24,7 @@ function deleteIfExist($file) {
     }
 }
 
-Kirby::plugin('felixhaeberle/kirby3-webp', [
+Kirby::plugin('felixhaeberle/kirby4-webp', [
     'hooks' => [
         'file.create:after' => function ($file) {
             if (shouldGenerateWebP($file)) {

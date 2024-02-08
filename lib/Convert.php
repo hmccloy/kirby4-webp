@@ -18,12 +18,12 @@ class Convert
 
     public function __construct()
     {
-        $this->quality = kirby()->option('kirby3-webp.quality', 90);
-        $this->maxQuality = kirby()->option('kirby3-webp.maxQuality', 85);
-        $this->defaultQuality = kirby()->option('kirby3-webp.defaultQuality', 85);
-        $this->metadata = kirby()->option('kirby3-webp.metadata', "none");
-        $this->encoding = kirby()->option('kirby3-webp.encoding', "auto");
-        $this->skip = kirby()->option('kirby3-webp.skip', false);
+        $this->quality = kirby()->option('kirby4-webp.quality', 90);
+        $this->maxQuality = kirby()->option('kirby4-webp.maxQuality', 85);
+        $this->defaultQuality = kirby()->option('kirby4-webp.defaultQuality', 85);
+        $this->metadata = kirby()->option('kirby4-webp.metadata', "none");
+        $this->encoding = kirby()->option('kirby4-webp.encoding', "auto");
+        $this->skip = kirby()->option('kirby4-webp.skip', false);
     }
 
     public function generateWebP($file)
@@ -32,9 +32,9 @@ class Convert
             // Checking file type since only images are processed
             if (in_array($file->extension(), ['jpg', 'jpeg', 'png'])) {
                 // WebPConvert options
-                $path = $file->contentFileDirectory() . '/';
-                $input = $path . $file->filename();
-                $output = $path . $file->name() . '.webp';
+                $pathinfo = pathinfo($file->realpath());
+                $input = $pathinfo['dirname'] . '/' . $pathinfo['basename'];
+                $output = $pathinfo['dirname'] . '/' . $file->name() . '.webp';
 
                 // Generating WebP image & placing it alongside the original version
                 WebPConvert::convert($input, $output, $option = [
@@ -47,6 +47,7 @@ class Convert
                 ]);
             }
         } catch (Exception $e) {
+
             return response::error($e->getMessage());
         }
     }
